@@ -23,16 +23,17 @@ if ( ! class_exists( 'WP_CLI' ) ) {
  */
 function codeat_get_by_url( $args ){    
     $url = parse_url( esc_html( $args[0] ) );
-    $slug = $url['path'];
-    $last_slug = array_filter( explode('/', $slug), 'strlen' );
-    $last_slug = $last_slug[count($last_slug)];
-    $post = get_posts(array(
+    $slug = $url[ 'path' ];
+    $last_slug = array_filter( explode( '/', $slug ), 'strlen' );
+    $last_slug = $last_slug[ count( $last_slug ) ];
+    
+    $post = get_posts( array(
             'name' => $last_slug,
             'posts_per_page' => 1,
     ));
     $post = $post[ 0 ];
     if ( is_object( $post ) ) {
-        WP_CLI::log( $post->ID . ' | ' . $post->post_type );
+        WP_CLI::log( 'post | ' . $post->ID . ' | ' . $post->post_type );
         return;
     }
     
@@ -40,7 +41,7 @@ function codeat_get_by_url( $args ){
     foreach ( $taxonomies as $tax_type_key => $taxonomy ) {
         $tax = get_term_by( 'slug', $last_slug, $taxonomy );
         if( is_object( $tax ) ) {
-            WP_CLI::log( $tax->term_id . ' | ' . $tax->taxonomy );
+            WP_CLI::log( 'term | ' . $tax->term_id . ' | ' . $tax->taxonomy );
             return;
         }
     }
