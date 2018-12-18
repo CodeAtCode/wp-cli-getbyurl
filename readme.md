@@ -20,4 +20,4 @@ It is a good practice in WP CLI when you have to execute commands that are heavy
 
 ### Why the separator is pipe?
 
-In that way is more easy to do scri
+In that way is more easy to do script on it in bash or other languages
