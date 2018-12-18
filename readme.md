@@ -1,17 +1,24 @@
-# How to use 
+# How to use it
+[![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://img.shields.io/badge/License-GPL%20v2-blue.svg)   
 
 ## Output structure
 `Kind of content | post id | post type/taxonomy`
 
 ## Commands
 To get the id and post type by url:
+
 `wp get-by-url --skip-plugins --skip-themes http://demo.test/2018/10/your-post`
+
 Output:
+
 `post | 33 | post`
 
 To get the id and taxonomy by url:
+
 `wp get-by-url --skip-plugins --skip-themes http://demo.test/tag/test/`
+
 Output:
+
 `term | 2 | post_tag`
 
 ### Why skip plugins and themes
