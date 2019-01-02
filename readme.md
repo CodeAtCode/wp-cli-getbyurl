@@ -1,7 +1,10 @@
 # How to use it
 [![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://img.shields.io/badge/License-GPL%20v2-blue.svg)   
 
-## Output structure
+## Install
+`wp package install codeAtcode/wp-cli-getbyurl`
+
+### Output structure
 `Kind of content | post id | post type/taxonomy`
 
 ## Commands
@@ -28,3 +31,21 @@ It is a good practice in WP CLI when you have to execute commands that are heavy
 ### Why the separator is pipe?
 
 In that way is more easy to do script on it in bash or other languages
+
+## How to use it
+
+```#!/bin/bash
+
+# How to use the script:
+#     cat list.txt | xargs -n1 remove-page-by-url.sh
+
+out=`wp get-by-url $1`
+command=`cut -d'|' -f1 <<< $out`
+id=`cut -d'|' -f2 <<< $out`
+taxonomy=`cut -d'|' -f3 <<< $out`
+if [ $taxonomy == 'post' ];
+    wp $command delete $id
+else
+    wp $command delete $taxonomy $id
+fi
+```
