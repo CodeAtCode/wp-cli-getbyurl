@@ -31,10 +31,12 @@ function codeat_get_by_url( $args ){
             'name' => $last_slug,
             'posts_per_page' => 1,
     ));
-    $post = $post[ 0 ];
-    if ( is_object( $post ) ) {
-        WP_CLI::log( 'post | ' . $post->ID . ' | ' . $post->post_type );
-        return;
+    if( isset( $post[ 0 ] ) ) {
+        $post = $post[ 0 ];
+        if ( is_object( $post ) ) {
+            WP_CLI::log( 'post | ' . $post->ID . ' | ' . $post->post_type );
+            return;
+        }
     }
     
     $taxonomies = get_taxonomies();
