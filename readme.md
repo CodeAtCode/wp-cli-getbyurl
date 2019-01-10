@@ -2,7 +2,7 @@
 [![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://img.shields.io/badge/License-GPL%20v2-blue.svg)   
 
 ## Install
-`wp package install codeAtcode/wp-cli-getbyurl`
+`wp package install codeatcode/wp-cli-getbyurl`
 
 ### Output structure
 `Kind of content | post id | post type/taxonomy`
