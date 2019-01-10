@@ -38,7 +38,7 @@ function codeat_get_by_url( $args ){
     $taxonomies = get_taxonomies( array( '_builtin' => true ), 'objects' );
     foreach ( $taxonomies as $taxonomy ) {
         if ( $taxonomy->rewrite[ 'slug' ] === $term_slug ) {
-            $tax = get_term_by( 'name', $last_slug, $taxonomy->name );
+            $tax = get_term_by( 'slug', $last_slug, $taxonomy->name );
             if( is_object( $tax ) ) {
                 WP_CLI::log( 'term | ' . $tax->term_id . ' | ' . $tax->taxonomy );
                 return;
