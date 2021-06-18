@@ -24,6 +24,7 @@ function codeat_get_by_url( $args ){
     
     $hasext = pathinfo( $url, PATHINFO_EXTENSION );
     if ( !empty( $hasext ) ) {
+        $url = preg_replace( "/^(.+)-\d+?x\d+?(\.\w+)$/i","$1$2", $url );
         $media = attachment_url_to_postid( $url );
         if ( $media !== 0 ) {
             WP_CLI::log( 'media | ' . $media . ' | attachment' );
@@ -43,12 +44,14 @@ function codeat_get_by_url( $args ){
     $term_slug = $url_parameters[ 0 ];
     
     $taxonomies = get_taxonomies( array( '_builtin' => true ), 'objects' );
-    foreach ( $taxonomies as $taxonomy ) {
-        if ( $taxonomy->rewrite[ 'slug' ] === $term_slug ) {
-            $tax = get_term_by( 'slug', $last_slug, $taxonomy->name );
-            if( is_object( $tax ) ) {
-                WP_CLI::log( 'term | ' . $tax->term_id . ' | ' . $tax->taxonomy );
-                return;
+    if ( is_array( $taxonomies ) ) {
+        foreach ( $taxonomies as $taxonomy ) {
+            if ( $taxonomy->rewrite[ 'slug' ] === $term_slug ) {
+                $tax = get_term_by( 'slug', $last_slug, $taxonomy->name );
+                if( is_object( $tax ) ) {
+                    WP_CLI::log( 'term | ' . $tax->term_id . ' | ' . $tax->taxonomy );
+                    return;
+                }
             }
         }
     }

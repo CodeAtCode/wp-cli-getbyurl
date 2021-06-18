@@ -1,6 +1,6 @@
 {
     "name": "codeatcode/get-by-url",
-    "description": "Get the id and post type or taxonomy by the url",
+    "description": "Get the id of post types, taxonomies or media by the url",
     "type": "wp-cli-package",
     "homepage": "https://github.com/codeatcode",
     "authors": [],
@@ -10,6 +10,6 @@
     },
     "require": {
         "wp-cli/wp-cli": ">=2.0.0",
-        "php":">=5.4"
+        "php":">=7.0"
     }
 }
