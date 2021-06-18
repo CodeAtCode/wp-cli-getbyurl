@@ -27,7 +27,7 @@ function codeat_get_by_url( $args ){
         $url = preg_replace( "/^(.+)-\d+?x\d+?(\.\w+)$/i","$1$2", $url );
         $media = attachment_url_to_postid( $url );
         if ( $media !== 0 ) {
-            WP_CLI::log( 'media | ' . $media . ' | attachment' );
+            WP_CLI::log( 'post | ' . $media . ' | attachment' );
             return;
         }
     }

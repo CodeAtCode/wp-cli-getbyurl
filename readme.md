@@ -45,11 +45,11 @@ out=$(wp get-by-url "$1" --skip-plugins --skip-themes)
 if [[ -n $out ]]; then
     command=$(cut -d'|' -f1 <<< "$out" | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//')
     id=$(cut -d'|' -f2 <<< "$out" | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//')
-    taxonomy=$(cut -d'|' -f3 <<< "$out" | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//')
-    if [[ "$taxonomy" == 'post' ]]; then
+    what=$(cut -d'|' -f3 <<< "$out" | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//')
+    if [[ "$what" == 'post' ]]; then
         wp "$command" delete "$id" --skip-plugins --skip-themes
     else
-        wp "$command" delete "$taxonomy" "$id" --skip-plugins --skip-themes
+        wp "$command" delete "$what" "$id" --skip-plugins --skip-themes
     fi
 fi
 ```
