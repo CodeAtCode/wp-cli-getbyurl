@@ -24,6 +24,8 @@ Output:
 
 `term | 2 | post_tag`
 
+Works also with attachment.
+
 ### Why skip plugins and themes
 
 It is a good practice in WP CLI when you have to execute commands that are heavy of resources to not load plugins and themes for a lot of reasons.

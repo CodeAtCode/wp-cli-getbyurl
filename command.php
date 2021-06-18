@@ -10,7 +10,6 @@ if ( ! class_exists( 'WP_CLI' ) ) {
  * ## OPTIONS
  *
  * <url>
- * : Number of users to generate
  *
  * ## EXAMPLES
  *
@@ -18,11 +17,19 @@ if ( ! class_exists( 'WP_CLI' ) ) {
  *
  * @accesspublic
  * @param  array $args
- * @param  array $assoc_args
  * @return
  */
 function codeat_get_by_url( $args ){ 
     $url = esc_html( $args[0] );
+    
+    $hasext = pathinfo( $url, PATHINFO_EXTENSION );
+    if ( !empty( $hasext ) ) {
+        $media = attachment_url_to_postid( $url );
+        if ( $media !== 0 ) {
+            WP_CLI::log( 'media | ' . $media . ' | attachment' );
+            return;
+        }
+    }
     
     $post = url_to_post( $url );
     if ( is_object( $post ) ) {
