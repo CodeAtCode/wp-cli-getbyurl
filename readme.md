@@ -46,7 +46,7 @@ if [[ -n $out ]]; then
     command=$(cut -d'|' -f1 <<< "$out" | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//')
     id=$(cut -d'|' -f2 <<< "$out" | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//')
     what=$(cut -d'|' -f3 <<< "$out" | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//')
-    if [[ "$what" == 'post' ]]; then
+    if [[ "$what" == 'post' || "$what" == 'attachment' ]]; then
         wp "$command" delete "$id" --skip-plugins --skip-themes
     else
         wp "$command" delete "$what" "$id" --skip-plugins --skip-themes
