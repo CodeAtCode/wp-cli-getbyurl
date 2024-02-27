@@ -1,6 +1,12 @@
 # How to use it
 [![License](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://img.shields.io/badge/License-GPL%20v2-blue.svg)   
 
+# Warning
+
+There is an official parameter for this in WP-CLI: https://developer.wordpress.org/cli/commands/post/url-to-id/
+
+This package will be not updated!
+
 ## Install
 `wp package install codeatcode/wp-cli-getbyurl`
 
