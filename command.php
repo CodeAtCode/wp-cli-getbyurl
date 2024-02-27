@@ -46,6 +46,9 @@ function codeat_get_by_url( $args ){
     $taxonomies = get_taxonomies( array( '_builtin' => true ), 'objects' );
     if ( is_array( $taxonomies ) ) {
         foreach ( $taxonomies as $taxonomy ) {
+	    if ( !is_array( $taxonomy->rewrite ) ) {
+		continue;
+	    }
             if ( $taxonomy->rewrite[ 'slug' ] === $term_slug ) {
                 $tax = get_term_by( 'slug', $last_slug, $taxonomy->name );
                 if( is_object( $tax ) ) {
